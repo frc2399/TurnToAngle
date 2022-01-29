@@ -1,7 +1,22 @@
 {
+  "HALProvider": {
+    "Other Devices": {
+      "SPARK MAX [2]": {
+        "header": {
+          "open": true
+        }
+      },
+      "SPARK MAX [8]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",
+      "/LiveWindow/DriveTrainEpicGrok": "Subsystem",
       "/LiveWindow/DriveTrainGrok": "Subsystem",
       "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
       "/LiveWindow/Ungrouped/PIDController[1]": "PIDController",

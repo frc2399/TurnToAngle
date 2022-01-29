@@ -18,12 +18,14 @@ import edu.wpi.first.hal.HAL;
 import edu.wpi.first.wpilibj.DriverStation;
 //import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants.JoystickConstants;
 //import frc.robot.RobotContainer;
 import frc.robot.subsystems.DriveTrainGrok;
-import edu.wpi.first.math.MathUtil;
+//import edu.wpi.first.math.MathUtil;
+import frc.robot.subsystems.DriveTrainEpicGrok;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -37,6 +39,8 @@ public class Robot extends TimedRobot {
     private Command m_autonomousCommand;
 
     private RobotContainer m_robotContainer;
+    
+    public static double targetAngle = 0.0;
 
 
     /**
@@ -117,43 +121,49 @@ public class Robot extends TimedRobot {
     public void teleopPeriodic() {
         boolean rotateToAngle = false;
     if (RobotContainer.JOYSTICK.getRawButton(JoystickConstants.RESET)) {
-      DriveTrainGrok.ahrs.reset();
+      DriveTrainEpicGrok.ahrs.reset();
       System.out.println("reset");
     }
     if (RobotContainer.JOYSTICK.getRawButton(JoystickConstants.GO_TO_0)) {
-      DriveTrainGrok.turnController.setSetpoint(0.0f);
+      targetAngle = 0.0f;
+      //DriveTrainGrok.turnController.setSetpoint(targetAngle);
       rotateToAngle = true;
       System.out.println("Go to 0 degrees");
     } else if (RobotContainer.JOYSTICK.getRawButton(JoystickConstants.GO_TO_90)) {
-      DriveTrainGrok.turnController.setSetpoint(90.0f);
+      targetAngle = 90.0f;
+      //DriveTrainGrok.turnController.setSetpoint(targetAngle);
       rotateToAngle = true;
       System.out.println("Go to 90 degrees");
     } else if (RobotContainer.JOYSTICK.getRawButton(JoystickConstants.GO_TO_180)) {
-      DriveTrainGrok.turnController.setSetpoint(179.9f);
+      targetAngle = 179.9f;
+      //DriveTrainGrok.turnController.setSetpoint(targetAngle);
       rotateToAngle = true;
       System.out.println("Go to 180 degrees");
     } else if (RobotContainer.JOYSTICK.getRawButton(JoystickConstants.GO_TO_NEG90)) {
-      DriveTrainGrok.turnController.setSetpoint(-90.0f);
+      targetAngle = -90.0f;
+      //DriveTrainGrok.turnController.setSetpoint(targetAngle);
       rotateToAngle = true;
       System.out.println("Go to negative 90 degrees");
     }
-    double currentRotationRate;
-    if (rotateToAngle) {
-      currentRotationRate = MathUtil.clamp(DriveTrainGrok.turnController.calculate(DriveTrainGrok.ahrs.getAngle()), -1.0, 1.0);
-    } else {
-      currentRotationRate = RobotContainer.JOYSTICK.getTwist();
-    }
+    // double currentRotationRate;
+    // if (rotateToAngle) {
+    //   currentRotationRate = MathUtil.clamp(DriveTrainGrok.turnController.calculate(DriveTrainGrok.ahrs.getAngle()), -1.0, 1.0);
+    // } else {
+    //   currentRotationRate = RobotContainer.JOYSTICK.getTwist();
+    // }
+
     try {
       /* Use the joystick X axis for lateral movement, */
       /* Y axis for forward movement, and the current */
       /* calculated rotation rate (or joystick Z axis), */
       /* depending upon whether "rotate to angle" is active. */
-      DriveTrainGrok.myRobot.arcadeDrive(0, currentRotationRate);
+
+    //   DriveTrainGrok.myRobot.arcadeDrive(0, DriveTrainEpicGrok.outputSpeed);
     } catch (RuntimeException ex) {
-      DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);
+    DriverStation.reportError("Error communicating with drive system:  " + ex.getMessage(), true);
     }
 
-    }
+  }
 
     @Override
     public void testInit() {

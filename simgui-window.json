@@ -5,9 +5,9 @@
       "maximized": "0",
       "style": "0",
       "userScale": "2",
-      "width": "1112",
-      "xpos": "1590",
-      "ypos": "83"
+      "width": "1440",
+      "xpos": "1488",
+      "ypos": "53"
     }
   },
   "Window": {
@@ -18,27 +18,27 @@
     },
     "###Joysticks": {
       "Collapsed": "0",
-      "Pos": "262,605",
+      "Pos": "267,726",
       "Size": "796,155"
     },
     "###Keyboard 0 Settings": {
       "Collapsed": "0",
-      "Pos": "341,31",
+      "Pos": "233,24",
       "Size": "300,560"
     },
     "###Keyboard 1 Settings": {
       "Collapsed": "0",
-      "Pos": "872,61",
-      "Size": "300,560"
+      "Pos": "1253,226",
+      "Size": "300,593"
     },
     "###NetworkTables": {
       "Collapsed": "0",
-      "Pos": "138,81",
+      "Pos": "1075,39",
       "Size": "750,185"
     },
     "###Other Devices": {
       "Collapsed": "0",
-      "Pos": "1092,94",
+      "Pos": "583,18",
       "Size": "250,695"
     },
     "###System Joysticks": {
