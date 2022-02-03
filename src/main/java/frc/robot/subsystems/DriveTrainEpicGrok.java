@@ -60,7 +60,7 @@ public class DriveTrainEpicGrok extends SubsystemBase {
     //double rotateToAngleRate;
 
 
-    static final double kP = 0.03;
+    public static final double kP = 0.03;
     static final double kI = 0;
     static final double kD = 0;
     static final double kF = 0;
@@ -131,6 +131,11 @@ public class DriveTrainEpicGrok extends SubsystemBase {
     public static void setMotors(double leftSpeed, double rightSpeed) {
         leftFrontMotorController.set(leftSpeed);
         rightFrontMotorController.set(rightSpeed);
+    }
+
+    public static double getAngle()
+    {
+        return ahrs.getAngle();
     }
 
 }
